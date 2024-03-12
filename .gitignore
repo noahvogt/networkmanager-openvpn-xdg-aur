@@ -3,3 +3,4 @@ NetworkManager-openvpn/
 nohup.out
 pkg/
 *.zst
+*.log
