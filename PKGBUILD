@@ -3,13 +3,16 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn-xdg
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.10.4
+pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification"
-url="https://wiki.gnome.org/Projects/NetworkManager"
+url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(
+  gcc-libs
+  glib2
+  glibc
   libnm
   libsecret
   openvpn
@@ -24,11 +27,12 @@ optdepends=(
   'libnma-gtk4: GUI support (GTK 4)'
   'libnma: GUI support (GTK 3)'
 )
-_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6 # tags/1.10.2^0
-source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit"
+# Can't locate the public key (ihuguet@redhat.com, 07F9AEC86144386D9576210B66A44781B4EBC2D0)
+source=(
+  "git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=$pkgver"
         "xdg-basedir.patch")
-sha256sums=('SKIP'
-            '25d1e22354f2ce30871654fa3bfebfe19dfe82432f0c4998ccd62b0c05727cba')
+b2sums=('5498e9d65e2bdc2e2b473e80e1379b44aa8041bfef88d345c74e24760c28c32a164fe48f353039b5415aa94b2ecee4a44e72741510de8994a9eb2aff33cbd1c1'
+        '12e4e6fbe9c3212636825e3686dfcdc618d7fb410c6e9e7a8d286918a50356e5ea6e51d387f25fa78655a1a155aacc44cf8714063342e464034a17b4d0b4b498')
 provides=('networkmanager-openvpn')
 conflicts=('networkmanager-openvpn')
 
